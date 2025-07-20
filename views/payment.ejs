@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Payment</title>
 
     <!-- Local Files -->
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
@@ -11,7 +11,7 @@
     <!-- Libraries -->
 </head>
 <header>
-    <h1><a href="/index">Dashboard</a></h1>
+    <h1><a href="/index">Payment</a></h1>
     <div class="navbar">
       <a href="/index">
         Home
@@ -46,43 +46,49 @@
         </a>
       <% } %>
     </div>
-</header>
+  </header>
 <body>
-  <h1>Welcome <%= user.username %>!</h1>
-
-<h2>Email: <%= user.email %></h2>
-<h2>Phone: <%= user.phone %></h2>
-<h2>User Type: <%= user.type %></h2>
-<h2>Delivery Address: <%= user.deliveryAddress %></h2>
-
-<h2>Order History:</h2>
-<ul>
-    <% if (user.orderHistory && user.orderHistory.length > 0) { %>
-        <% user.orderHistory.forEach(order => { %>
-            <li>
-                Order ID: <%= order._id %> - Date: <% if (order.orderDate) { %>
-                    <%= order.orderDate.toLocaleString() %>
-                <% } %>
-                <ul>
-                    <% if (order.products) { %>
-                        <% order.products.forEach(product => { %>
-                            <li><%= product.name %> - Quantity: <%= product.quantity %> - Price: $<%= product.price %></li>
-                        <% }) %>
+    <div>
+        <h2>Order Summary</h2>
+        <% if (cart && Object.keys(cart).length > 0) { %>
+            <ul>
+                <% let totalPrice = 0; %>
+                <% Object.entries(cart).forEach(([productId, quantity]) => { %>
+                    <% const product = products.find(prod => prod._id.toString() === productId); %>
+                    <% if (product) { %>
+                        <% const productPrice = product.DevicePrice * quantity; %>
+                        <li>
+                            <p>Product Name: <%= product.DeviceName %></p>
+                            <p>Price: <%= product.DevicePrice %></p>
+                            <p>Quantity: <%= quantity %></p>
+                            <p>Total Price: $<%= productPrice %></p>
+                            <% totalPrice += productPrice; %>
+                        </li>
                     <% } %>
-                </ul>
-            </li>
-        <% }) %>
-    <% } else { %>
-        <li>No orders found.</li>
-    <% } %>
-</ul>
-  <h2>Activity Log:</h2>
-  <ul>
-    <% if (user.activityLog) { %>
-      <% user.activityLog.forEach(activity => { %>
-          <li><%= activity %></li>
-      <% }) %>
-    <% } %>
-  </ul>
+                <% }); %>
+            </ul>
+            <p>Total: $<%= totalPrice %></p>
+
+            <% if (paymentMessage) { %>
+                <p><%= paymentMessage %></p>
+            <% } else { %>
+                <h2>Payment Details</h2>
+                <form action="/processPaymentAndPlaceOrder" method="post">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required><br>
+
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" required><br>
+
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required><br>
+
+                    <button type="submit">Pay Now</button>
+                </form>
+            <% } %>
+        <% } else { %>
+            <p>Your cart is empty.</p>
+        <% } %>
+    </div>
 </body>
 </html>

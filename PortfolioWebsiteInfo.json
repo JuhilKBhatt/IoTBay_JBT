@@ -1,0 +1,16 @@
+{
+  "title": "IOT Bay",
+  "description": "IOT Bay is spoof E-commerce website that allows users to browse and purchase IoT devices. The data is loaded via MongoDB.",
+  "language": ["Nodejs", "JavaScript", "EJS", "MongoDB"],
+  "liveDemo": "",
+  "images": [
+    "https://res.cloudinary.com/dmj4ggkjq/image/upload/v1753004166/IOT-Bay-img-1_x8pwus.png",
+    "https://res.cloudinary.com/dmj4ggkjq/image/upload/v1753004168/IOT-Bay-img-2_iagc1p.png",
+    "https://res.cloudinary.com/dmj4ggkjq/image/upload/v1753004168/IOT-Bay-img-3_lclbqk.png"
+  ],
+  "videoDemo": "https://res.cloudinary.com/dmj4ggkjq/video/upload/v1753004652/IOT-Bay-Video_iqm5ia.mp4",
+  "Priority": 1,
+  "type": "Solo",
+  "version": "Aplha",
+  "Visibilty": true
+}

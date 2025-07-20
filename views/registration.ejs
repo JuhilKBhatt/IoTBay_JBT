@@ -1,19 +1,17 @@
-<!-- views/index.ejs -->
+<!-- registration.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-
+    <title>User Registration</title>
     <!-- Local Files -->
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 
     <!-- Libraries -->
-
 </head>
 <header>
-  <h1><a href="/index">Welcome to IoT Bay</a></h1>
+  <h1><a href="/index">Signup</a></h1>
   <div class="navbar">
     <a href="/index">
       Home
@@ -50,25 +48,34 @@
   </div>
 </header>
 <body>
-  <ul class="product-form">
-    <% products.forEach(product => { %>
-      <% if (product.DeviceStock > 0) { %>
-        <li class="product-item">
-          <h2 class="product-name"><%= product.DeviceName %></h2>
-          <p class="product-details">Manufacturer: <%= product.DeviceManufacturer %></p>
-          <p class="product-details" style="font-weight: bold;">Price: $<%= product.DevicePrice %></p>
-          <p class="product-details">Description: <%= product.DeviceDescription %></p>
-          <p class="product-details">Category: <%= product.DeviceCategory %></p>
-          <p class="product-details">Stock Left: <%= product.DeviceStock %></p>
-          <form action="/addToCart" method="post">
-            <input type="hidden" name="productId" value="<%= product._id %>">
-            <input type="number" name="quantity" value="1" min="1">
-            <button type="submit">Add to Cart</button>
-          </form>
-        </li>
-      <% } %>
-    <% }) %>
-  </ul>
-  <!-- JS Scripts-->
+  <div class="login-page">
+    <div class="form">
+    <form class="login-form" action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone"><br>
+
+        <label for="deliveryAddress">Delivery Address:</label>
+        <input id="deliveryAddress" name="deliveryAddress" required><br>
+
+        <button type="submit">Register</button>
+        <% if (errorMessage) { %>
+          <p class="error-message"><%= errorMessage %></p>
+        <% } %>
+    </form>
+    <% if (registrationSuccess) { %>
+      <p style="color: greenyellow;" class="error-message">Registration successful!</p>
+      <a href="/login" class="login-link">Go to Login</a>
+  <% } %>
+    </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,22 @@
+[
+  {
+    "DeviceName": "Smartphone X100",
+    "DevicePrice": 999,
+    "DeviceStock": 20
+  },
+  {
+    "DeviceName": "Laptop Pro 15",
+    "DevicePrice": 1899,
+    "DeviceStock": 10
+  },
+  {
+    "DeviceName": "Wireless Earbuds",
+    "DevicePrice": 199,
+    "DeviceStock": 50
+  },
+  {
+    "DeviceName": "Smartwatch Y2",
+    "DevicePrice": 299,
+    "DeviceStock": 30
+  }
+]
