@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 // MongoDB connection string
-const uri = "mongodb+srv://Juhil:LOcRO08NWfCAoGib@iotbay.w6qgafn.mongodb.net/?retryWrites=true&w=majority&appName=IoTBay";
+const uri = "mongodb+srv://juhilkbhatt:FuLCArc7LzhfpwYS@iotbay.atziiqp.mongodb.net/?retryWrites=true&w=majority&appName=IOTBay";
 
 // Create a new MongoClient instance
 const client = new MongoClient(uri, {
@@ -29,8 +29,8 @@ async function connectToDB() {
     // Access database and collections
     const database = client.db("test");
     const usersCollection = database.collection("users");
-    const ProductsCollection = database.collection("Products");
-    const OrdersCollection = database.collection("Orders");
+    const ProductsCollection = database.collection("products");
+    const OrdersCollection = database.collection("orders");
 
     // Configure Express settings
     app.set('view engine', 'ejs'); // Set EJS as the view engine
@@ -360,7 +360,7 @@ app.post('/processPaymentAndPlaceOrder', async (req, res) => {
         res.status(500).send('Error in fetching user data');
       }
     });
-    
+
     // Define a route to render the registration page
     app.get('/registration', (req, res) => {
       try {
@@ -404,12 +404,12 @@ app.post('/processPaymentAndPlaceOrder', async (req, res) => {
     });
 
     // Start server
-    const port = process.env.PORT || 3000;
+    const port = 8080;
     app.listen(port, () => console.log(`Server running on port ${port}`));
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
   }
 }
 
-// Call the function to connect to the database
+// Call the function to connect to database
 connectToDB();

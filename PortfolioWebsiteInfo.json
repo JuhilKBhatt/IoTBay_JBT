@@ -1,0 +1,16 @@
+{
+  "title": "IOT Bay",
+  "description": "IOT Bay is spoof E-commerce website that allows users to browse and purchase IoT devices. The data is loaded via MongoDB.",
+  "language": ["Nodejs", "JavaScript", "MongoDB"],
+  "liveDemo": "",
+  "images": [
+    "",
+    "",
+    ""
+  ],
+  "videoDemo": "",
+  "Priority": 1,
+  "type": "Solo",
+  "version": "Aplha",
+  "Visibilty": true
+}

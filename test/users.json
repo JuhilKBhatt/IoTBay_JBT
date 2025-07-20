@@ -1,0 +1,22 @@
+[
+  {
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "password": "password123",
+    "phone": "1234567890",
+    "deliveryAddress": "123 Main St, Sydney",
+    "type": "customer",
+    "orderHistory": [],
+    "activityLog": ["User Registered at 2025-07-20 10:00:00"]
+  },
+  {
+    "username": "janedoe",
+    "email": "janedoe@example.com",
+    "password": "securepass",
+    "phone": "0987654321",
+    "deliveryAddress": "456 Side St, Melbourne",
+    "type": "customer",
+    "orderHistory": [],
+    "activityLog": ["User Registered at 2025-07-20 11:00:00"]
+  }
+]
