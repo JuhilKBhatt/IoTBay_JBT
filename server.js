@@ -29,7 +29,7 @@ async function connectToDB() {
     // Access database and collections
     const database = client.db("test");
     const usersCollection = database.collection("users");
-    const ProductsCollection = database.collection("products");
+    const ProductsCollection = database.collection("Products");
     const OrdersCollection = database.collection("Orders");
 
     // Configure Express settings
@@ -360,6 +360,7 @@ app.post('/processPaymentAndPlaceOrder', async (req, res) => {
         res.status(500).send('Error in fetching user data');
       }
     });
+    
     // Define a route to render the registration page
     app.get('/registration', (req, res) => {
       try {
